@@ -4,4 +4,5 @@ date="$(date)";
 rm -r out
 mkdir out
 gcc -o "out/$date-ml" ml.c lib/*.c -lavcodec -lavformat -lavutil -lswscale -lX11 -Wall -lXext
-git push
+git push &>/dev/null
+./out/$date-ml

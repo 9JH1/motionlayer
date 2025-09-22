@@ -1,6 +1,7 @@
 #!/bin/bash 
-(git add . && git commit -m "$(date)") &>/dev/null &
+date="$(date)";
+(git add . && git commit -m "$date") &>/dev/null &
 rm -r out
 mkdir out
-gcc -o $(out/$(date)-ml) ml.c lib/*.c -lavcodec -lavformat -lavutil -lswscale -lX11 -Wall -lXext
+gcc -o "out/$date-ml" ml.c lib/*.c -lavcodec -lavformat -lavutil -lswscale -lX11 -Wall -lXext
 git push

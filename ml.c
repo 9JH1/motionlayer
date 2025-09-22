@@ -2,17 +2,11 @@
 #include <stdlib.h>
 #include "lib/plib.h"
 
-void help() {
-	printf("motionlayer [options]\noptions:\n");
-	pl_help();
-}
+void _exit(int code);
+void help(void);
+int post(void);
 
-void _exit(int code){
-	printf("exiting\n");
-	pl_exit();
-	exit(code);
-}
-
+// handle arguments
 int main(const int argc, const char *argv[]){
 	// SET ARGUMENTS ==========================
 	pl_arg *help_a = PL_A(
@@ -55,12 +49,28 @@ int main(const int argc, const char *argv[]){
 
 		exit(1);
 	} else {
-		// RUN HELP DIALOG ======================
-		if(pl_arg_run(help_a) == PL_SUCCESS) 
-			help();
-
-
+		// argument parse completed move on.. 
+		exit(post());
 	}
 
 	exit(0);
+}
+
+void help() {
+	printf("motionlayer [options]\noptions:\n");
+	pl_help();
+}
+
+void _exit(int code){
+	printf("exiting\n");
+	pl_exit();
+	exit(code);
+}
+
+int post(){
+	if(pl_arg_run(pl_arg_get("--help")) == PL_SUCCESS) 
+		help();
+
+
+	return 0;
 }

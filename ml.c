@@ -22,16 +22,11 @@ int main(const int argc, const char *argv[]){
 	if(ret != PL_SUCCESS){
 		help();
 		
-		// HANDLE ERROR =========================
 		printf("%s caused by '%s'\n",
 				pl_return_type_string[ret], 
 				PL_LAST_ARG);
 		exit(1);
-	} else {
-		// argument parse completed move on.. 
-		exit(post());
-	}
-
+	} else exit(post());
 	exit(0);
 }
 

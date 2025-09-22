@@ -8,8 +8,8 @@ void help() {
 }
 
 void _exit(int code){
+	printf("exiting\n");
 	pl_exit();
-	printf("\rmotionlayer exited with code %d\n", code);
 	exit(code);
 }
 
@@ -53,7 +53,7 @@ int main(const int argc, const char *argv[]){
 				pl_return_type_string[ret], 
 				PL_LAST_ARG);
 
-		return 1;
+		exit(1);
 	} else {
 		// RUN HELP DIALOG ======================
 		if(pl_arg_run(help_a) == PL_SUCCESS) 

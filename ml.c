@@ -32,7 +32,7 @@ int main(const int argc, const char *argv[]){
 }
 
 void help() {
-	printf("motionlayer [options]\n\n");
+	printf("motionlayer [\033[3moptions\033[0m]\n\n");
 	pl_help();
 }
 

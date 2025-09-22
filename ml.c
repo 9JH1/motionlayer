@@ -6,36 +6,16 @@ void _exit(int code);
 void help(void);
 int post(void);
 
+pl_arg  *help_a, *xine_a, *geom_a, *zoom_a, *volm_a;
+
 // handle arguments
 int main(const int argc, const char *argv[]){
 	// SET ARGUMENTS ==========================
-	pl_arg *help_a = PL_A(
-			.name = "--help",
-			.description = "Show this dialog"
-			); 
-
-	pl_arg *xine_a = PL_A(
-			.name = "--dual",
-			.description = "fills wallpaper over two monitors",
-			);
-
-	pl_arg *geom_a = PL_A(
-			.name = "--geometry",
-			.description = "set custom mpv geometry eg 1920x1070+0+0",
-			.takes_value = TAKES_VALUE,
-			);
-
-	pl_arg *zoom_a = PL_A(
-			.name = "--zoom",
-			.description = "set video zoom, default 0.0",
-			.takes_value=TAKES_VALUE,
-			);
-
-	pl_arg *volm_a = PL_A(
-			.name = "--volume",
-			.description = "set video volume, default 0",
-			.takes_value = TAKES_VALUE,
-			);
+	help_a = PL_A("--help","Show this dialog"); 
+	xine_a = PL_A("--dual","fills wallpaper over two monitors");
+	geom_a = PL_A("--geometry","set custom mpv geometry eg 1920x1070+0+0",TAKES_VALUE);
+	zoom_a = PL_A("--zoom","set video zoom, default 0.0",TAKES_VALUE);
+	volm_a = PL_A("--volume","set video volume, default 0",TAKES_VALUE);
 	
 	// INIT PLIB ==============================
 	const pl_return_type ret = PL_PROC();
@@ -46,7 +26,6 @@ int main(const int argc, const char *argv[]){
 		printf("%s caused by '%s'\n",
 				pl_return_type_string[ret], 
 				PL_LAST_ARG);
-
 		exit(1);
 	} else {
 		// argument parse completed move on.. 
@@ -67,10 +46,10 @@ void _exit(int code){
 	exit(code);
 }
 
-int post(){
-	if(pl_arg_run(pl_arg_get("--help")) == PL_SUCCESS) 
-		help();
 
+int post(){
+	if(pl_arg_run(help_a) == PL_SUCCESS) 
+		help();
 
 	return 0;
 }

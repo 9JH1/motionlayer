@@ -13,15 +13,16 @@ int main(const int argc, const char *argv[]){
 	// SET ARGUMENTS ==========================
 	help_a = PL_A("--help","Show this dialog"); 
 	xine_a = PL_A("--dual","fills wallpaper over two monitors");
-	geom_a = PL_A("--geometry","set custom mpv geometry eg 1920x1070+0+0",TAKES_VALUE);
-	zoom_a = PL_A("--zoom","set video zoom, default 0.0",TAKES_VALUE);
-	volm_a = PL_A("--volume","set video volume, default 0",TAKES_VALUE);
+	geom_a = PL_A("--geometry","set custom mpv geometry eg 1920x1070+0+0",TAKES_VALUE,"Video");
+	zoom_a = PL_A("--zoom","set video zoom, default 0.0",TAKES_VALUE, "Video");
+	volm_a = PL_A("--volume","set video volume, default 0",TAKES_VALUE, "Video");
 	
 	// INIT PLIB ==============================
 	const pl_return_type ret = PL_PROC();
 	if(ret != PL_SUCCESS){
 		help();
 		
+		// HANDLE ERROR =========================
 		printf("%s caused by '%s'\n",
 				pl_return_type_string[ret], 
 				PL_LAST_ARG);
@@ -31,7 +32,7 @@ int main(const int argc, const char *argv[]){
 }
 
 void help() {
-	printf("motionlayer [options]\noptions:\n");
+	printf("motionlayer [options]\n\n");
 	pl_help();
 }
 

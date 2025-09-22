@@ -14,7 +14,7 @@ int main(const int argc, const char *argv[]){
 	help_a = PL_A("--help","show this dialog"); 
 	plib_a = PL_A("--plib-version","Show plib version");
 	prog_a = PL_A("--version", "Show version");
-	xine_a = PL_A("--dual","fills wallpaper over two monitors");
+	xine_a = PL_A("--dual","fills wallpaper over two monitors", .catagory = "Video");
 	geom_a = PL_A("--geometry","set custom mpv geometry eg 1920x1070+0+0",TAKES_VALUE,"Video");
 	zoom_a = PL_A("--zoom","set video zoom, default 0.0",TAKES_VALUE, "Video");
 	volm_a = PL_A("--volume","set video volume, default 0",TAKES_VALUE, "Video");

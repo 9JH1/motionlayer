@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include "lib/plib.h"
 
+#define VERSION "2.3"
+
 void _exit(int code);
 void help(void);
 int post(void);
@@ -46,8 +48,19 @@ void _exit(int code){
 
 
 int post(){
-	if(pl_arg_run(help_a) == PL_SUCCESS) 
+	if(pl_arg_run(help_a) == PL_SUCCESS) {
 		help();
+		return 0;
+	}
+
+	if(pl_arg_run(prog_a) == PL_SUCCESS){
+		printf("%s\n",VERSION);
+		return 0;
+	}
+
+	if(pl_arg_run(plib_a) == PL_SUCCESS){
+		printf("%s\n",PL_VERSION);
+	}
 
 	return 0;
 }

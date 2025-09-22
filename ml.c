@@ -8,7 +8,7 @@ void help() {
 }
 
 void _exit(int code){
-	pl_exit();
+	//pl_exit();
 	printf("\rmotionlayer exited with code %d\n", code);
 	exit(code);
 }

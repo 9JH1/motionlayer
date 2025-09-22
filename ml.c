@@ -6,12 +6,14 @@ void _exit(int code);
 void help(void);
 int post(void);
 
-pl_arg  *help_a, *xine_a, *geom_a, *zoom_a, *volm_a;
+pl_arg  *help_a, *xine_a, *geom_a, *zoom_a, *volm_a, *plib_a, *prog_a;
 
 // handle arguments
 int main(const int argc, const char *argv[]){
 	// SET ARGUMENTS ==========================
 	help_a = PL_A("--help","show this dialog"); 
+	plib_a = PL_A("--plib-version","Show plib version");
+	prog_a = PL_A("--version", "Show version");
 	xine_a = PL_A("--dual","fills wallpaper over two monitors");
 	geom_a = PL_A("--geometry","set custom mpv geometry eg 1920x1070+0+0",TAKES_VALUE,"Video");
 	zoom_a = PL_A("--zoom","set video zoom, default 0.0",TAKES_VALUE, "Video");

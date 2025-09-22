@@ -27,7 +27,7 @@ int main(const int argc, const char *argv[]){
 		help();
 		
 		// HANDLE ERROR =========================
-		printf("%s caused by '%s'\n",
+		printf("\033[31m%s caused by '\033[31;1m%s\033[31m'\033[0m\n",
 				pl_return_type_string[ret], 
 				PL_LAST_ARG);
 		exit(1);
